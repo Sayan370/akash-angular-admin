@@ -1,0 +1,55 @@
+<h4 class="word-break" mat-dialog-title>{{this.dialogTitle}} {{this.form.controls.title.value}} </h4>
+<form [formGroup]="form" (submit)="SendData(form.value)">
+<div mat-dialog-content class="border-dialog">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+          
+              
+                   
+                    <div class="input-group mb-3" *ngIf="!isDelete">
+                     
+                      <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Title</mat-label>
+                        <input matInput placeholder="Enter Title" formControlName="title" required>
+                        <mat-error *ngIf="this.form.controls.title.invalid">{{getErrorMessage('title')}}</mat-error>
+                      
+                      </mat-form-field>
+                      <mat-form-field appearance="outline" class="w-100" (click)="f_input.click()">
+                        <mat-label>Upload Image</mat-label>
+                        <button mat-icon-button matPrefix >
+                          <mat-icon>attach_file</mat-icon>
+                        </button>
+                        <input type="text" readonly matInput formControlName="photo" />
+                        <input
+        type="file"
+        hidden
+        #f_input
+        (change)="handleFileInputChange($event)"
+      />
+                        <mat-error *ngIf="this.form.controls.photo.invalid && this.isEdit==false">{{getErrorMessage('photo')}}</mat-error>
+                      </mat-form-field>
+                      <mat-form-field  appearance="outline" class="w-100">
+                        <mat-label>Choose an option</mat-label>
+                        <mat-select formControlName="category">
+                          <mat-option *ngFor="let catData of categoryData" value="{{catData._id}}">{{catData.title}}</mat-option>
+                         
+                        </mat-select>
+                        <mat-error *ngIf="this.form.controls.category.invalid">{{getErrorMessage('category')}}</mat-error>
+
+                      </mat-form-field>
+                    </div>
+                    <h4 *ngIf="isDelete">Are You Sure Want To Delete This ?</h4>
+                  
+                
+               
+          </div>
+        </div>
+      </div>
+
+</div>
+<div mat-dialog-actions class="pull-right">
+    <button type="submit" mat-raised-button [class.spinner]="loading" [disabled]="loading" class="btn btn-primary">Submit</button>
+  <button type="button" mat-raised-button color="warn" (click)="onNoClick()">Close</button>
+</div>
+</form>

@@ -1,0 +1,83 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-info">
+        <div class="card-body pb-10">
+          <button type="button" class="btn btn-transparent p-0 float-right">
+            <i class="icon-list"></i>
+          </button>
+          <div *ngIf="!isCatLoading" class="text-value">{{catcounter}}</div>
+
+          <div *ngIf="isCatLoading" class="dashboard-loader">
+            <mat-progress-bar 
+              color="accent" 
+              mode="query">
+            </mat-progress-bar>
+          </div>
+          <div>Total Category</div>
+        </div>
+     
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-success">
+        <div class="card-body pb-10">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent p-0 float-right">
+              <i class="icon-briefcase"></i>
+            </button>
+          
+          </div>
+          <div *ngIf="!isPortfolioLoading" class="text-value">{{portfoliocounter}}</div>
+
+          <div *ngIf="isPortfolioLoading" class="dashboard-loader">
+            <mat-progress-bar 
+              color="warn" 
+              mode="query">
+            </mat-progress-bar>
+          </div>
+          <div>Total Portfolio</div>
+        </div>
+
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body pb-10">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent p-0 float-right">
+              <i class="icon-envelope"></i>
+            </button>
+         
+          </div>
+          <div *ngIf="!isContactLoading" class="text-value">{{contactcounter}}</div>
+
+          <div *ngIf="isContactLoading" class="dashboard-loader">
+            <mat-progress-bar 
+              color="accent" 
+              mode="query">
+            </mat-progress-bar>
+          </div>
+          <div>Total Contact</div>
+        </div>
+     
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body pb-10">
+          <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent p-0 float-right">
+              <i class="icon-settings"></i>
+            </button>
+       
+          </div>
+          <div class="text-value">9.823</div>
+          <div>Total news</div>
+        </div>
+  
+      </div>
+    </div><!--/.col-->
+  </div><!--/.row-->
+
+</div>

@@ -1,0 +1,22 @@
+<h4 mat-dialog-title>{{this.dialogTitle}} </h4>
+<form [formGroup]="form" (submit)="SendData(form.value)">
+<div mat-dialog-content class="border-dialog">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 mx-auto">
+          
+              
+                    <h4 *ngIf="isDelete">Are You Sure Want To Delete This ?</h4>
+                  
+                
+               
+          </div>
+        </div>
+      </div>
+
+</div>
+<div mat-dialog-actions class="pull-right">
+    <button type="submit" mat-raised-button [class.spinner]="loading" [disabled]="loading" class="btn btn-primary">Submit</button>
+  <button type="button" mat-raised-button color="warn" (click)="onNoClick()">Close</button>
+</div>
+</form>
