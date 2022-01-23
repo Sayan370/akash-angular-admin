@@ -1,23 +1,27 @@
 {
-  "name": "akash-app-admin",
+  "name": "@coreui/coreui-free-angular-admin-template",
   "version": "2.11.2",
-  "description": "Akash App admin",
+  "description": "CoreUI Free Angular 11 Admin Template",
   "author": {
-    "name": "Sayan Mukherjee"
+    "name": "Łukasz Holeczek",
+    "url": "http://holeczek.pl",
+    "github": "https://github.com/mrholek",
+    "twitter": "https://twitter.com/lukaszholeczek"
   },
   "contributors": [
     {
-      "name": "Sayan Mukherjee"
+      "name": "Andrzej Kopański",
+      "url": "https://github.com/xidedix"
     }
   ],
   "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2021 Akash App",
+  "copyright": "Copyright 2021 creativeLabs Łukasz Holeczek",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "postinstall": "ngcc --properties es2015 browser module main --first-only",
     "start": "ng serve",
-    "build": "ng build --configuration production --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
+    "build": "ng build --prod --aot --build-optimizer --common-chunk --vendor-chunk --optimization --progress",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -56,28 +60,27 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1102.4",
-    "@angular/cli": "^13.1.4",
-    "@angular/compiler-cli": "^11.2.14",
+    "@angular/cli": "^11.2.4",
+    "@angular/compiler-cli": "^11.2.5",
     "@angular/language-service": "^11.2.5",
     "@types/jasmine": "^3.6.6",
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^14.14.33",
     "codelyzer": "^6.0.0",
-    "enhanced-resolve": "^3.3.0",
-    "jasmine-core": "~3.8.0",
+    "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
-    "karma-jasmine-html-reporter": "^1.7.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
     "protractor": "~7.0.0",
     "ts-node": "^8.10.2",
     "tslint": "~6.1.0",
     "typescript": "~4.1.5"
   },
   "engines": {
-    "node": "14.x",
-    "npm": "8.x"
+    "node": ">= 10.13",
+    "npm": ">= 6"
   }
 }
