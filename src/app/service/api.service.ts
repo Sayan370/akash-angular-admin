@@ -149,4 +149,10 @@ export class ApiService extends HttpCommon {
       const user = JSON.parse(localStorage.getItem('user'));
       return (user !== null) ? true : false;
     }
+
+    get userData(){
+
+      const users = JSON.parse(localStorage.getItem('user'));
+      return users;
+    }
 }
