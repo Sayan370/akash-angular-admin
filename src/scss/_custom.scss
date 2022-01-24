@@ -35,10 +35,21 @@
   border-top: 1px solid #e9ecef;
   border-bottom: 1px solid #e9ecef;
 }
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
 
+.sidebar{
+
+  z-index: 999999!important;
+}
+
+}
+@media only screen and (min-width: 768px) {
 .app-header,
 .sidebar-fixed .sidebar {
   z-index: 999 !important;
+}
+
 }
 .table-loader {
   display: flex;
@@ -68,3 +79,5 @@
 
   width: 47%;
 }
+
+
