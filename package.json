@@ -1,21 +1,18 @@
 {
-  "name": "@coreui/coreui-free-angular-admin-template",
+  "name": "@akash-admin-app",
   "version": "2.11.2",
-  "description": "CoreUI Free Angular 11 Admin Template",
+  "description": "Akash admin app",
   "author": {
-    "name": "Łukasz Holeczek",
-    "url": "http://holeczek.pl",
-    "github": "https://github.com/mrholek",
-    "twitter": "https://twitter.com/lukaszholeczek"
+    "name": "Sayan Mukherjee",
+    "github": "https://github.com/Sayan370/"
   },
   "contributors": [
     {
-      "name": "Andrzej Kopański",
-      "url": "https://github.com/xidedix"
+      "name": "Sayan Mukherjee"
     }
   ],
-  "homepage": "https://coreui.io/angular",
-  "copyright": "Copyright 2021 creativeLabs Łukasz Holeczek",
+  "homepage": "",
+  "copyright": "Copyright 2021 akash app",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
