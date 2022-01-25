@@ -7,14 +7,21 @@ import { ApiService } from '../../service/api.service';
 import { AppVariables } from '../../others/constant';
 import { Subject } from "rxjs";
 import {MatSnackBar} from '@angular/material/snack-bar';
-
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
-  templateUrl: 'portfolio.component.html'
+  templateUrl: 'portfolio.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class PortfolioComponent implements AfterViewInit, OnInit {
 
-  displayedColumns: string[] = ['position', 'title', 'category', 'photo', 'action'];
+  displayedColumns: string[] = ['position', 'title', 'action'];
   isAddLoading = false;
   isEditLoading = false;
   isDeleteLoading = false;
@@ -25,6 +32,8 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   private portfolioAddStatusDataSubject: Subject<any> = new Subject<any>();
   private portfolioEditStatusDataSubject: Subject<any> = new Subject<any>();
   private portfolioDeleteStatusDataSubject: Subject<any> = new Subject<any>();
+  
+  expandedElement: PortfolioElement | null;
   public AddformData: any;
   public EditformData: any;
   public DeleteformData: any;
@@ -182,6 +191,10 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
       this.categoryDataSource = data;
     }, (error) => {
     });
+  }
+ public  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 export interface PortfolioElement {

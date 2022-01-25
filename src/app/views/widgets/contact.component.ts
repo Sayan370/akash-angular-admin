@@ -6,18 +6,26 @@ import { ContactDialog } from './../../dialog/contact-dialog';
 import { ApiService } from '../../service/api.service';
 import { Subject } from "rxjs";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
-  templateUrl: 'contact.component.html'
+  templateUrl: 'contact.component.html',
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ]
 })
 export class ContactComponent implements AfterViewInit , OnInit {
 
-  displayedColumns: string[] = ['position', 'name', 'email','phone','message','date', 'action'];
+  displayedColumns: string[] = ['position', 'name', 'action'];
   dataSource = new MatTableDataSource<ContactElement>();
   private contactAddStatusDataSubject: Subject<any> = new Subject<any>();
   private contactEditStatusDataSubject: Subject<any> = new Subject<any>();
   private contactDeleteStatusDataSubject: Subject<any> = new Subject<any>();
-
+  expandedElement: ContactElement | null;
   public DeleteformData:any;
   public dialogRef:any
  
@@ -151,6 +159,10 @@ this.contactDeleteStatusDataSubject.subscribe(()=>{
     });
 
 
+  }
+ public  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

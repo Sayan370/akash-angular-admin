@@ -243,6 +243,10 @@ this.categoryDeleteStatusDataSubject.subscribe(()=>{
     console.log(val);
   }
 
+  public  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   public FetchData(){
     this.isLoading=true;
     let counter=0;
