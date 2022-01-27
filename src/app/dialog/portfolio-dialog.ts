@@ -19,8 +19,7 @@ import { Subject, Observable } from "rxjs";
     categoryData:any;
     public prevData:any
     dialogTitle='Add Portfolio';
-    file_store: File;
-    file_list: Array<string> = [];
+
     private portfolioFormDataSubject: Subject<any> = new Subject<any>();
     public portfolioAddStatusSubject: Subject<any> = new Subject<any>();
     public portfolioDeleteStatusSubject: Subject<any> = new Subject<any>();
@@ -129,16 +128,6 @@ import { Subject, Observable } from "rxjs";
        
       }
 
-      public handleFileInputChange(event: any): void {
-       
-       
-        if (event.target.value) {
-          this.file_store = <File>event.target.files[0];
-          this.form.patchValue({photo: `${this.file_store.name}`});
-        } else {
-          this.form.patchValue({photo: ''});
-        }
-      }
 
       public SendData(formVal:any){
 
@@ -154,14 +143,8 @@ import { Subject, Observable } from "rxjs";
             formData.append('title',formVal.title);
             formData.append('category',formVal.category);
             formData.append('id',this.formDatas._id);
-            formData.append('oldphoto',this.formDatas.photo);
-            if(this.file_store){
-            formData.append('photo',this.file_store,this.file_store.name);
-
-            }else{
-
-              formData.append('photo',undefined);
-            }
+            formData.append('photo',formVal.photo);
+          
 
 
             this.portfolioFormDataSubject.next({formVal,formData});
@@ -170,7 +153,7 @@ import { Subject, Observable } from "rxjs";
             const formData = new FormData();  
             formData.append('title',formVal.title);
             formData.append('category',formVal.category);
-            formData.append('photo',this.file_store,this.file_store.name);
+            formData.append('photo',formVal.photo);
       
 
             this.portfolioFormDataSubject.next({formVal,formData});
@@ -188,7 +171,7 @@ import { Subject, Observable } from "rxjs";
       }
 
       public setValue(data:any) {
-        this.form.patchValue({title: data.title, category:data.category });
+        this.form.patchValue({title: data.title, category:data.category, photo:data.photo });
       }
 
       

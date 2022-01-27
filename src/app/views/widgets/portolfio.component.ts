@@ -40,7 +40,6 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
   public dialogRef: any
   public categoryDataSource: any
   public appConstants = new AppVariables();
-  public photoUrl = this.appConstants.PHOTO_URL;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(public dialog: MatDialog, public Api: ApiService, private _snackBar: MatSnackBar) { }
   ngOnInit(): void {
@@ -179,6 +178,11 @@ export class PortfolioComponent implements AfterViewInit, OnInit {
           }
           d.position = counter;
         });
+
+        let myArray = d.photo.split("file/d/");
+        let photosUrl=myArray[1].split("/view");
+        console.log(photosUrl[0]);
+        d.photoUrl=`https://drive.google.com/uc?export=view&id=${photosUrl[0]}`;
       });
       this.dataSource.data = data;
       this.isLoading = false;
@@ -204,6 +208,7 @@ export interface PortfolioElement {
   photo: string;
   category: any;
   categoryTitle: string;
+  photoUrl: string;
 }
 export interface CategoryElement {
   title: string;

@@ -15,20 +15,14 @@
                         <mat-error *ngIf="this.form.controls.title.invalid">{{getErrorMessage('title')}}</mat-error>
                       
                       </mat-form-field>
-                      <mat-form-field appearance="outline" class="w-100" (click)="f_input.click()">
-                        <mat-label>Upload Image</mat-label>
-                        <button mat-icon-button matPrefix type="button">
-                          <mat-icon>attach_file</mat-icon>
-                        </button>
-                        <input type="text" readonly matInput formControlName="photo" />
-                        <input
-        type="file"
-        hidden
-        #f_input
-        (change)="handleFileInputChange($event)"
-      />
-                        <mat-error *ngIf="this.form.controls.photo.invalid && this.isEdit==false">{{getErrorMessage('photo')}}</mat-error>
+                   
+                      <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Image Url</mat-label>
+                        <input matInput placeholder="Enter Google Drive Image Url" formControlName="photo" required>
+                        <mat-error *ngIf="this.form.controls.photo.invalid">{{getErrorMessage('photo')}}</mat-error>
+                      
                       </mat-form-field>
+                   
                       <mat-form-field  appearance="outline" class="w-100">
                         <mat-label>Choose an option</mat-label>
                         <mat-select formControlName="category">
